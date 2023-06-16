@@ -1,6 +1,6 @@
 from colorama import Fore
 from html.parser import HTMLParser
-import requests
+import requests, os
 
 class fmovies(HTMLParser):
     def __init__(self):
@@ -19,13 +19,33 @@ class fmovies(HTMLParser):
     def handle_data(self, data):
         if self.capture:              
             self.data.append(data)
+
+def logo():
+    width = os.get_terminal_size().columns
+    os.system('cls')
+    os.system('title Lethal Services!')
+    print(Fore.LIGHTMAGENTA_EX+'                                                           '.center(width))
+    print(Fore.LIGHTMAGENTA_EX+'     ██╗     ███████╗████████╗██╗  ██╗ █████╗ ██╗          '.center(width))
+    print(Fore.LIGHTMAGENTA_EX+'     ██║     ██╔════╝╚══██╔══╝██║  ██║██╔══██╗██║          '.center(width))
+    print(Fore.LIGHTMAGENTA_EX+'     ██║     █████╗     ██║   ███████║███████║██║          '.center(width))
+    print(Fore.LIGHTMAGENTA_EX+'     ██║     ██╔══╝     ██║   ██╔══██║██╔══██║██║          '.center(width))
+    print(Fore.LIGHTMAGENTA_EX+'     ███████╗███████╗   ██║   ██║  ██║██║  ██║███████╗     '.center(width))
+    print(Fore.LIGHTMAGENTA_EX+'     ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝     '.center(width))
+    print(Fore.LIGHTCYAN_EX+'        TOS: Lethal Holds No Responsibility At ALL!         '.center(width))
+    print(Fore.WHITE+f'           Version: Beta 1.9.3 https://lethals.org/            '.center(width))
+    print(Fore.WHITE+f'                    {Fore.LIGHTMAGENTA_EX}Lethal{Fore.WHITE} Is Now {Fore.LIGHTGREEN_EX}Online{Fore.WHITE} & Ready To Use!\n\n'.center(width))
+
 def main():
+    logo()
     request = requests.get('https://fmovies.name/')
     if request.status_code == 200:       
             parser = fmovies()
             parser.feed(request.text)
             for results in parser.data:
-                print(f'[{Fore.GREEN}Info{Fore.WHITE}] [{Fore.LIGHTRED_EX}Alert{Fore.WHITE}] [+] {results.capitalize()}') 
+                if 'live' in results:
+                    print(f'[{Fore.GREEN}Info{Fore.WHITE}] {Fore.LIGHTMAGENTA_EX}Status{Fore.WHITE}: {Fore.LIGHTGREEN_EX}{results.capitalize()}{Fore.WHITE}') 
+                else:
+                    print(f'[{Fore.GREEN}Result{Fore.WHITE}] {Fore.LIGHTBLUE_EX}Website{Fore.WHITE}: {Fore.LIGHTYELLOW_EX}https://{results}/{Fore.WHITE}') 
     else:    
             print(f'{Fore.LIGHTGREEN_EX}Status_Code{Fore.WHITE}: {Fore.LIGHTYELLOW_EX}{request.status_code}{Fore.WHITE} | Something Went {Fore.LIGHTRED_EX}Wrong!{Fore.WHITE}') 
 
