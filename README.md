@@ -1,5 +1,5 @@
 # FmoviesChecker
-Checks For Valid Online Fmovies Link.
+Checks For Valid Online Fmovies Links.
 
 ### Usage:
 ```python
