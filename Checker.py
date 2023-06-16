@@ -32,7 +32,7 @@ def logo():
     print(Fore.LIGHTMAGENTA_EX+'     ███████╗███████╗   ██║   ██║  ██║██║  ██║███████╗     '.center(width))
     print(Fore.LIGHTMAGENTA_EX+'     ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝     '.center(width))
     print(Fore.LIGHTCYAN_EX+'        TOS: Lethal Holds No Responsibility At ALL!         '.center(width))
-    print(Fore.WHITE+f'              Version: Beta 1.0.0 https://lethals.org/            \n\n'.center(width))
+    print(Fore.WHITE+f'             Version: Beta 1.0.0 https://lethals.org/            \n\n'.center(width))
 
 def main():
     logo()
