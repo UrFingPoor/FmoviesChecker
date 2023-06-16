@@ -1,2 +1,2 @@
 # FmoviesChecker
-Check For Valid Online Fmovies Alts
+Checks For Valid Online Fmovies Link.
