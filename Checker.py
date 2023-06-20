@@ -37,7 +37,7 @@ def logo():
 def main():
     logo()
     request = requests.get('https://fmovies.name/')
-    if request.status_code == 200:       
+    if request.ok:       
             parser = fmovies()
             parser.feed(request.text)
             for results in parser.data:
